@@ -25,10 +25,10 @@ gallery:
   - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "Считыватель Cognex проверяет код на крышке сметаны", caption: "Считыватель Cognex проверяет код на каждой крышке сметаны.", group: "Внутри проекта", layout: "third" }
   - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Уникальный DataMatrix и дата на продукте", caption: "Результат на продукте — уникальный DataMatrix и дата, нанесённые в потоке.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/marked-product.jpg", alt: "Маркированные пакеты молока с уникальными кодами", caption: "Продукция идёт маркированной — у каждой упаковки своя идентичность.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/datamatrix-label.jpg", alt: "Печатная этикетка с уникальным DataMatrix и штрихкодом", caption: "Печатная этикетка короба — DataMatrix и штрихкод связывают упаковку с государственной системой.", group: "Внутри проекта", layout: "half" }
-  - { src: "/cases/honest-sign/coded-butter-line.jpg", alt: "Пачки масла на линии, каждая с напечатанным кодом и датой", caption: "Пачки масла идут по линии — на каждой свой код и дата, нанесённые в потоке.", group: "Внутри проекта", layout: "half" }
+  - { src: "/cases/honest-sign/coded-butter-line.jpg", alt: "Пачки масла на линии, каждая с напечатанным кодом и датой", caption: "Пачки масла идут по линии — на каждой свой код и дата, нанесённые в потоке.", group: "Внутри проекта", layout: "wide" }
+  - { src: "/cases/honest-sign/datamatrix-label.jpg", alt: "Две печатные этикетки в руке, на каждой уникальный DataMatrix и штрихкод", caption: "Печатные этикетки в руке — на каждой свой DataMatrix и штрихкод для государственной системы.", group: "Внутри проекта", layout: "duo" }
+  - { src: "/cases/honest-sign/code-on-kefir.jpg", alt: "Уникальный DataMatrix и дата на пакете кефира, нанесённые в потоке", caption: "Уникальный DataMatrix и дата, нанесённые в потоке на пакете кефира.", group: "Внутри проекта", layout: "duo" }
   - { src: "/cases/honest-sign/verified-in-app.png", alt: "Приложение «Честный знак»: товар проверен", caption: "А в приложении упаковка отображается как «Проверено».", group: "Внутри проекта", layout: "closing" }
-  - { src: "/cases/honest-sign/code-on-kefir.jpg", alt: "Уникальный DataMatrix и дата на пакете кефира, нанесённые в потоке", caption: "Уникальный DataMatrix и дата, нанесённые в потоке на пакете кефира.", group: "Внутри проекта", layout: "wide" }
 ---
 
 ## Задача
