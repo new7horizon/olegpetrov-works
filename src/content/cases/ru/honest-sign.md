@@ -20,8 +20,9 @@ gallery:
   - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "Новая автоматика маркировки в существующей машине", caption: "Подключение новой автоматики маркировки к машинам, не рассчитанным на это.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/network-into-plc.jpg", alt: "Управляемый коммутатор заводит линию в сеть", caption: "Управляемый коммутатор заводит упаковочную линию в сеть — мост OT/IT.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/plc-drive-cabinet.jpg", alt: "PLC, привод и защита в шкафу управления машиной", caption: "PLC, привод и защита, смонтированные в шкафу управления машиной.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/handheld-verify.jpg", alt: "ТСД: код нанесён и отсканирован", caption: "Проверка на месте: код считывается как нанесённый и отсканированный.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/datalogic-reading-cups.jpg", alt: "Камера Datalogic считывает код каждого стакана", caption: "Камера Datalogic считывает код каждого стакана в потоке.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Камера зрения проверяет коды, оператор ведёт линию", caption: "Камера зрения проверяет каждый код, пока оператор ведёт линию.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "Считыватель Cognex проверяет код на крышке сметаны", caption: "Считыватель Cognex проверяет код на каждой крышке сметаны.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Уникальный DataMatrix и дата на продукте", caption: "Результат на продукте — уникальный DataMatrix и дата, нанесённые в потоке.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/marked-product.jpg", alt: "Маркированные пакеты молока с уникальными кодами", caption: "Продукция идёт маркированной — у каждой упаковки своя идентичность.", group: "Внутри проекта" }
   - { src: "/cases/honest-sign/verified-in-app.png", alt: "Приложение «Честный знак»: товар проверен", caption: "А в приложении упаковка отображается как «Проверено».", group: "Внутри проекта" }
