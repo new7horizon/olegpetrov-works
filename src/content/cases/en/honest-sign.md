@@ -7,7 +7,7 @@ role: "Integration & commissioning"
 scope: "On-site delivery, start to finish"
 site: "Operating dairy plant, Russia"
 period: "2021–2022"
-cover: "/cases/honest-sign/process-commissioning.jpg"
+cover: "/cases/honest-sign/hero-production-line.jpg"
 tags: ["Marking & traceability", "Live production site"]
 order: 1
 result: |
@@ -15,15 +15,16 @@ result: |
 
   The plant met the Honest Sign deadline without losing production, and was left with a working, supportable setup it could run on its own.
 gallery:
-  - { src: "/cases/honest-sign/hero-coder-line.jpg", alt: "Marking unit mounted on a working packaging machine", caption: "The marking unit, mounted straight onto a working packaging machine.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/tech-camera-cognex-line.jpg", alt: "Vision camera checks codes while an operator runs the line", caption: "A camera checks every code while the operator keeps the line running.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/process-weighing-stations.jpg", alt: "Marking and weighing stations built into the plant", caption: "New marking and weighing stations, built into the plant's own rooms.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/process-cabinet-open.jpg", alt: "New control wiring tied into existing machinery", caption: "Tying new control wiring into machines never designed for it.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/tech-datamatrix-butter.jpg", alt: "Unique DataMatrix code and date printed inline on product", caption: "The result on the product — a unique code and date, printed inline.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/tech-server-rack.jpg", alt: "Plant server rack connecting the lines to the national system", caption: "Every line reports back to a server that talks to the national system.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/result-marked-pouches.jpg", alt: "Marked milk pouches each carrying a unique code", caption: "Production runs marked — each pack carries its own identity.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/result-handheld-scan.jpg", alt: "Handheld check shows code applied and scanned", caption: "Checked on the floor: code applied and scanned.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/result-app-verified.jpg", alt: "Honest Sign consumer app shows the product as verified", caption: 'And in the public app, the pack comes back "Verified".', group: "Inside the project" }
+  - { src: "/cases/honest-sign/production-floor.jpg", alt: "A working dairy plant mid-run", caption: "A working dairy plant mid-run — where marking had to be added without stopping the line.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/installation-hands.jpg", alt: "Running new low-voltage power by hand", caption: "Running new low-voltage power and conduit by hand, on a live food-grade floor.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/field-enclosure.jpg", alt: "Vision-camera connection box, PSU and switch in a field enclosure", caption: "A vision-camera connection box, power supply and switch wired into a field enclosure.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "New marking control wired into existing machinery", caption: "Tying the new marking control into machinery never designed for it.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/network-into-plc.jpg", alt: "Managed switch feeding the PLC cabinet", caption: "A managed switch puts the packaging line on the network — the OT/IT bridge.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/handheld-verify.jpg", alt: "Handheld check shows code applied and scanned", caption: "On-floor check: a code reads back as applied and scanned.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Vision camera verifies codes while the operator runs the line", caption: "A vision camera verifies every code while the operator runs the line.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Unique DataMatrix and date printed inline on product", caption: "The output on the product — a unique DataMatrix and date, printed inline.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/marked-product.jpg", alt: "Marked milk packs each carrying a unique code", caption: "Production runs marked — each pack carries its own identity.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/verified-in-app.png", alt: "Honest Sign consumer app shows the product as verified", caption: 'And in the public app, the pack comes back "Verified".', group: "Inside the project" }
 ---
 
 ## The challenge
