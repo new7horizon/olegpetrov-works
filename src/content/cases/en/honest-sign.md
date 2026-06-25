@@ -26,7 +26,10 @@ gallery:
   - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "A Cognex reader checks the code on every sour-cream lid", caption: "A Cognex reader checks the code on every sour-cream lid.", group: "Inside the project", layout: "third" }
   - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Unique DataMatrix and date printed inline on product", caption: "The output on the product — a unique DataMatrix and date, printed inline.", group: "Inside the project" }
   - { src: "/cases/honest-sign/marked-product.jpg", alt: "Marked milk packs each carrying a unique code", caption: "Production runs marked — each pack carries its own identity.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/datamatrix-label.jpg", alt: "A printed label with a unique DataMatrix and barcode", caption: "A printed box label — the DataMatrix and barcode tie the pack to the national system.", group: "Inside the project", layout: "half" }
+  - { src: "/cases/honest-sign/coded-butter-line.jpg", alt: "Butter packs on the line, each printed with a code and date", caption: "Butter packs run down the line, each printed with its own code and date inline.", group: "Inside the project", layout: "half" }
   - { src: "/cases/honest-sign/verified-in-app.png", alt: "Honest Sign consumer app shows the product as verified", caption: 'And in the public app, the pack comes back "Verified".', group: "Inside the project", layout: "closing" }
+  - { src: "/cases/honest-sign/code-on-kefir.jpg", alt: "A unique DataMatrix and date printed inline on a kefir pack", caption: "A unique DataMatrix and date, printed inline on a kefir pack.", group: "Inside the project", layout: "wide" }
 ---
 
 ## The challenge
