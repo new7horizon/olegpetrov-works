@@ -22,11 +22,11 @@ const photos = d.gallery.map((p) => ({ src: p.src, alt: p.alt }));
 ---
 
 <article class="case">
-  <header class="chero">
-    <img src={d.cover} alt={d.title} />
-  </header>
-
   <div class="cwrap">
+    <figure class="chero">
+      <img src={d.cover} alt={d.title} />
+    </figure>
+
     <div class="chead">
       <h1>{d.title}</h1>
       <p class="csub">{d.subtitle}</p>

@@ -145,17 +145,17 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       .case { padding-bottom: 8px; }
       .clabel { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 16px; }
 
-      /* compact hero — supports the content, doesn't dominate */
+      .cwrap { max-width: 940px; margin: 0 auto; }
+
+      /* hero — a large contained frame, like an oversized gallery card */
       .chero {
-        width: 100vw; margin-left: calc(50% - 50vw);
-        height: clamp(190px, 30vh, 340px); overflow: hidden; background: var(--panel);
+        margin: clamp(18px, 3vw, 30px) 0 0; aspect-ratio: 4 / 3;
+        overflow: hidden; border-radius: 10px; background: var(--panel);
       }
       .chero img { width: 100%; height: 100%; object-fit: cover; }
 
-      .cwrap { max-width: 940px; margin: 0 auto; }
-
       /* header: title (dominant) + one line + lightweight metadata */
-      .chead { margin: clamp(26px, 4vw, 40px) 0 0; }
+      .chead { margin: clamp(24px, 3.5vw, 38px) 0 0; }
       .chead h1 { font-size: clamp(34px, 5.5vw, 52px); letter-spacing: -0.03em; line-height: 1.04; }
       .csub { font-size: clamp(17px, 1.9vw, 20px); color: var(--graphite); margin: 15px 0 0; max-width: 52ch; line-height: 1.45; }
       .cmeta { font-size: 14px; color: var(--muted); margin: 18px 0 0; letter-spacing: .005em; }
@@ -207,7 +207,7 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       @media (max-width: 720px) {
         body { font-size: 16px; }
         .intro h1 { font-size: 36px; }
-        .chero { height: clamp(220px, 38vh, 360px); }
+        .chero { aspect-ratio: 3 / 2; }
         .gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
         .lb__nav { font-size: 34px; width: 44px; }
         .site-foot { gap: 4px 16px; }
