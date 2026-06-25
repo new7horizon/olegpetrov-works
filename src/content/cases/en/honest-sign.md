@@ -1,5 +1,5 @@
 ---
-title: "Честный Знак"
+title: "Честный знак"
 titleEn: "Honest Sign"
 subtitle: "Implementing Russia's Honest Sign traceability system at a live dairy production facility."
 summary: "Bringing Russia's Honest Sign marking online on a working dairy plant — every pack made traceable, without stopping production."
@@ -20,6 +20,7 @@ gallery:
   - { src: "/cases/honest-sign/field-enclosure.jpg", alt: "Vision-camera connection box, PSU and switch in a field enclosure", caption: "A vision-camera connection box, power supply and switch wired into a field enclosure.", group: "Inside the project" }
   - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "New marking control wired into existing machinery", caption: "Tying the new marking control into machinery never designed for it.", group: "Inside the project" }
   - { src: "/cases/honest-sign/network-into-plc.jpg", alt: "Managed switch feeding the PLC cabinet", caption: "A managed switch puts the packaging line on the network — the OT/IT bridge.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/plc-drive-cabinet.jpg", alt: "PLC, drive and protection in the machine cabinet", caption: "PLC, drive and protection wired in the machine cabinet.", group: "Inside the project" }
   - { src: "/cases/honest-sign/handheld-verify.jpg", alt: "Handheld check shows code applied and scanned", caption: "On-floor check: a code reads back as applied and scanned.", group: "Inside the project" }
   - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Vision camera verifies codes while the operator runs the line", caption: "A vision camera verifies every code while the operator runs the line.", group: "Inside the project" }
   - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Unique DataMatrix and date printed inline on product", caption: "The output on the product — a unique DataMatrix and date, printed inline.", group: "Inside the project" }
