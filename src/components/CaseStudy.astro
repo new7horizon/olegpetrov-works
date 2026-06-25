@@ -30,21 +30,8 @@ const photos = d.gallery.map((p) => ({ src: p.src, alt: p.alt }));
     <div class="chead">
       <h1>{d.title}</h1>
       <p class="csub">{d.subtitle}</p>
-      {
-        facts.length > 0 && (
-          <ul class="cfacts">
-            {facts.map(([key, v]) => (
-              <li>
-                <span class="k">{t(key)}</span>
-                {v}
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      {facts.length > 0 && <p class="cmeta">{facts.map(([, v]) => v).join('   •   ')}</p>}
     </div>
-
-    {d.summary && <p class="clede">{d.summary}</p>}
 
     {
       d.delivered.length > 0 && (
