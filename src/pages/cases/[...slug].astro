@@ -77,5 +77,16 @@ const meta = (
         </section>
       ))
     }
+
+    {
+      d.result && (
+        <div class="prose">
+          <h2>Result</h2>
+          {d.result.split('\n\n').map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      )
+    }
   </article>
 </Base>

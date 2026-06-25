@@ -12,6 +12,7 @@ const cases = defineCollection({
     scope: z.string().optional(),
     site: z.string().optional(),
     period: z.string().optional(),
+    result: z.string().optional(),
     cover: z.string(),
     tags: z.array(z.string()).default([]),
     order: z.number().default(99),
