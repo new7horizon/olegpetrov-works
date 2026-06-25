@@ -15,7 +15,7 @@ result: |
 
   The plant met the Honest Sign deadline without losing production, and was left with a working, supportable setup it could run on its own.
 gallery:
-  - { src: "/cases/honest-sign/production-floor.jpg", alt: "A working dairy plant mid-run", caption: "A working dairy plant mid-run — where marking had to be added without stopping the line.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/commissioning-scanner.jpg", alt: "A technician tuning the inline code scanner on a running sealer", caption: "Commissioning by hand — tuning the inline code scanner on a running sealer until every pack reads.", group: "Inside the project" }
   - { src: "/cases/honest-sign/production-piping-team.jpg", alt: "Engineers fitting the marking onto a live dairy line", caption: "On the floor with the crew — fitting the marking onto a live dairy line.", group: "Inside the project" }
   - { src: "/cases/honest-sign/field-enclosure.jpg", alt: "Vision-camera connection box, PSU and switch in a field enclosure", caption: "A vision-camera connection box, power supply and switch wired into a field enclosure.", group: "Inside the project" }
   - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "New marking control wired into existing machinery", caption: "Tying the new marking control into machinery never designed for it.", group: "Inside the project" }
