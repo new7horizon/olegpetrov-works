@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { useTranslations, localizeUrl, type Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const cases = (await getCollection('cases'))
+  .filter((c) => c.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const slugOf = (id: string) => id.split('/').slice(1).join('/');
+---
+
+<section class="intro">
+  <h1>{t('brand.name')}</h1>
+  <p class="lead">{t('home.lead')}</p>
+  <p class="muted">{t('home.location')}</p>
+</section>
+
+<section class="work" id="work">
+  <div class="section-head"><h2>{t('home.work')}</h2></div>
+  <div class="cards">
+    {
+      cases.map((c) => (
+        <a class="card" href={localizeUrl(lang, `/cases/${slugOf(c.id)}/`)}>
+          <div class="card__img">
+            <img src={c.data.cover} alt={c.data.title} loading="lazy" />
+          </div>
+          <div class="card__body">
+            <h3>
+              {c.data.title}
+              {c.data.titleEn && <span class="card__en">· {c.data.titleEn}</span>}
+            </h3>
+            <p>{c.data.summary}</p>
+            {c.data.tags.length > 0 && (
+              <span class="card__tags">{c.data.tags.join(' · ')}</span>
+            )}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-head"><h2>{t('home.about')}</h2></div>
+  <p>{t('home.about.body')}</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-head"><h2>{t('home.contact')}</h2></div>
+  <p class="muted">{t('home.contact.linkedin')}</p>
+  <p class="muted">{t('home.contact.email')}</p>
+</section>

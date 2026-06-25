@@ -1,31 +1,60 @@
 ---
-export interface Props {
+import LangSwitcher from '../components/LangSwitcher.astro';
+import {
+  locales,
+  defaultLang,
+  stripLocale,
+  localizeUrl,
+  useTranslations,
+  type Locale,
+} from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
   title: string;
   description?: string;
 }
-const { title, description = "Network infrastructure & low-voltage systems — hands-on engineering portfolio of Oleg Petrov." } = Astro.props;
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const desc = description ?? t('home.description');
 const year = 2026;
+
+// SEO: canonical + hreflang alternates derived from the locale-stripped path.
+const logical = stripLocale(Astro.url.pathname);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const alternates = locales.map((l) => ({
+  lang: l,
+  href: new URL(localizeUrl(l, logical), Astro.site).href,
+}));
+const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
 ---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={desc} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical.href} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     <title>{title}</title>
   </head>
   <body>
     <header class="site-head">
-      <a class="brand" href="/">
-        <span class="brand__name">Oleg Petrov</span>
-        <span class="brand__role">Network Infrastructure &amp; Low-Voltage Systems</span>
+      <a class="brand" href={localizeUrl(lang, '/')}>
+        <span class="brand__name">{t('brand.name')}</span>
+        <span class="brand__role">{t('brand.role')}</span>
       </a>
-      <nav class="site-nav">
-        <a href="/#work">Work</a>
-        <a href="/#about">About</a>
-        <a href="/#contact">Contact</a>
-      </nav>
+      <div class="site-head__right">
+        <nav class="site-nav">
+          <a href={localizeUrl(lang, '/#work')}>{t('nav.work')}</a>
+          <a href={localizeUrl(lang, '/#about')}>{t('nav.about')}</a>
+          <a href={localizeUrl(lang, '/#contact')}>{t('nav.contact')}</a>
+        </nav>
+        <LangSwitcher />
+      </div>
     </header>
 
     <main>
@@ -33,8 +62,8 @@ const year = 2026;
     </main>
 
     <footer class="site-foot">
-      <span>Oleg Petrov</span>
-      <span class="muted">Network infrastructure · low-voltage · OT/IT</span>
+      <span>{t('brand.name')}</span>
+      <span class="muted">{t('footer.tagline')}</span>
       <span class="muted">© {year} olegpetrov.works</span>
     </footer>
 
@@ -68,9 +97,21 @@ const year = 2026;
       .brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
       .brand__name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
       .brand__role { font-size: 12px; color: var(--muted); }
+      .site-head__right { display: flex; align-items: center; gap: 22px; }
       .site-nav { display: flex; gap: 22px; font-size: 14px; }
       .site-nav a { text-decoration: none; color: var(--graphite); }
       .site-nav a:hover { color: var(--accent); }
+
+      /* ---- language switcher ---- */
+      .lang-switch { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+      .lang-switch__item {
+        text-decoration: none; color: var(--faint); letter-spacing: .04em;
+        font-weight: 600; transition: color .15s ease;
+      }
+      .lang-switch__item:hover { color: var(--graphite); }
+      .lang-switch__item.is-active { color: var(--ink); }
+      .lang-switch__sep { color: var(--line); }
+
       .site-foot {
         max-width: var(--maxw); margin: 80px auto 0; padding: 24px;
         border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 24px;
@@ -158,6 +199,8 @@ const year = 2026;
         .meta { grid-template-columns: repeat(2, 1fr); }
         .meta > div:nth-child(2) { border-right: 0; }
         .site-foot { gap: 4px 16px; }
+        .site-head { flex-wrap: wrap; gap: 10px 16px; }
+        .site-head__right { gap: 16px; }
       }
     </style>
   </body>

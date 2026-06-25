@@ -1,0 +1,25 @@
+---
+import { locales, defaultLang, stripLocale, localizeUrl, getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const current = getLangFromUrl(Astro.url);
+const logical = stripLocale(Astro.url.pathname);
+const t = useTranslations(current);
+---
+
+<nav class="lang-switch" aria-label={t('switcher.label')}>
+  {
+    locales.map((l, i) => (
+      <Fragment>
+        {i > 0 && <span class="lang-switch__sep" aria-hidden="true">|</span>}
+        <a
+          href={localizeUrl(l, logical)}
+          hreflang={l}
+          class:list={['lang-switch__item', { 'is-active': l === current }]}
+          aria-current={l === current ? 'true' : undefined}
+        >
+          {l.toUpperCase()}
+        </a>
+      </Fragment>
+    ))
+  }
+</nav>

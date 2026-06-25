@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import CaseStudy from '../../../components/CaseStudy.astro';
+import { locales, defaultLang, useTranslations, type Locale } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  const paths = [];
+  for (const l of locales.filter((x) => x !== defaultLang)) {
+    for (const entry of cases.filter((c) => c.id.startsWith(`${l}/`))) {
+      paths.push({
+        params: { locale: l, slug: entry.id.split('/').slice(1).join('/') },
+        props: { entry, lang: l },
+      });
+    }
+  }
+  return paths;
+}
+
+const { entry, lang } = Astro.props as { entry: any; lang: Locale };
+const t = useTranslations(lang);
+---
+
+<Base
+  lang={lang}
+  title={`${entry.data.title} — ${t('brand.name')}`}
+  description={entry.data.subtitle}
+>
+  <CaseStudy entry={entry} lang={lang} />
+</Base>

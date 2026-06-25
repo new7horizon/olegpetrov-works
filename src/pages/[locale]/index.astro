@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import Home from '../../components/Home.astro';
+import { locales, defaultLang, useTranslations, type Locale } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return locales
+    .filter((l) => l !== defaultLang)
+    .map((l) => ({ params: { locale: l }, props: { lang: l } }));
+}
+
+const { lang } = Astro.props as { lang: Locale };
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} title={t('home.title')} description={t('home.description')}>
+  <Home lang={lang} />
+</Base>
