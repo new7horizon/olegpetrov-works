@@ -46,14 +46,18 @@ const photos = d.gallery.map((p) => ({ src: p.src, alt: p.alt }));
       )
     }
 
-    <section class="gallery">
-      {
-        photos.map((p, i) => (
-          <button class="thumb" data-i={i} type="button" aria-label={p.alt}>
-            <img src={p.src} alt={p.alt} loading="lazy" />
-          </button>
-        ))
-      }
+    <section class="gsection">
+      <p class="clabel">{t('case.implementation')}</p>
+      <p class="gsub">{photos.length} {t('case.galleryNote')}</p>
+      <div class="gallery">
+        {
+          photos.map((p, i) => (
+            <button class="thumb" data-i={i} type="button" aria-label={p.alt}>
+              <img src={p.src} alt={p.alt} loading="lazy" />
+            </button>
+          ))
+        }
+      </div>
     </section>
 
     {

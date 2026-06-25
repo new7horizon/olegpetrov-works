@@ -38,6 +38,8 @@ export const ui = {
     'case.period': 'Period',
     'case.result': 'Result',
     'case.delivered': 'What we delivered',
+    'case.implementation': 'Implementation',
+    'case.galleryNote': 'photos from the live commissioning',
     'switcher.label': 'Language',
   },
   ru: {
@@ -66,6 +68,8 @@ export const ui = {
     'case.period': 'Период',
     'case.result': 'Результат',
     'case.delivered': 'Что сделано',
+    'case.implementation': 'Внедрение',
+    'case.galleryNote': 'фото с пусконаладки',
     'switcher.label': 'Язык',
   },
 } as const;

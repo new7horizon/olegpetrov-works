@@ -110,7 +110,7 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       .lang-switch__sep { color: var(--line); }
 
       .site-foot {
-        max-width: var(--maxw); margin: clamp(56px, 8vw, 96px) auto 0; padding: 22px 24px;
+        max-width: var(--maxw); margin: clamp(40px, 5vw, 60px) auto 0; padding: 22px 24px;
         border-top: 1px solid var(--line); display: flex; justify-content: space-between;
         flex-wrap: wrap; gap: 6px 24px; font-size: 13px; color: var(--faint);
       }
@@ -145,32 +145,36 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       .case { padding-bottom: 8px; }
       .clabel { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 16px; }
 
-      .cwrap { max-width: 940px; margin: 0 auto; }
+      .cwrap { max-width: 1000px; margin: 0 auto; }
+      /* readable text measure (~72ch) for overview + result */
+      .chead, .cdeliv, .cresult { max-width: 640px; }
 
-      /* hero — a large contained frame, like an oversized gallery card */
+      /* hero — the cover photograph, contained with generous margins */
       .chero {
-        margin: clamp(18px, 3vw, 30px) 0 0; aspect-ratio: 4 / 3;
+        margin: clamp(14px, 2.5vw, 26px) 0 0; aspect-ratio: 4 / 3;
         overflow: hidden; border-radius: 10px; background: var(--panel);
       }
       .chero img { width: 100%; height: 100%; object-fit: cover; }
 
-      /* header: title (dominant) + one line + lightweight metadata */
-      .chead { margin: clamp(24px, 3.5vw, 38px) 0 0; }
-      .chead h1 { font-size: clamp(34px, 5.5vw, 52px); letter-spacing: -0.03em; line-height: 1.04; }
-      .csub { font-size: clamp(17px, 1.9vw, 20px); color: var(--graphite); margin: 15px 0 0; max-width: 52ch; line-height: 1.45; }
+      /* title block — dominant, sits close under the hero */
+      .chead { margin: clamp(16px, 2vw, 22px) 0 0; }
+      .chead h1 { font-size: clamp(36px, 6vw, 58px); letter-spacing: -0.03em; line-height: 1.03; }
+      .csub { font-size: clamp(17px, 1.9vw, 20px); color: var(--graphite); margin: 15px 0 0; line-height: 1.45; }
       .cmeta { font-size: 14px; color: var(--muted); margin: 18px 0 0; letter-spacing: .005em; }
 
       /* delivered */
-      .cdeliv { margin: clamp(30px, 4.5vw, 48px) 0 0; }
-      .cdeliv ul { list-style: none; padding: 0; margin: 0; max-width: 60ch; }
+      .cdeliv { margin: clamp(26px, 3.5vw, 38px) 0 0; }
+      .cdeliv ul { list-style: none; padding: 0; margin: 0; }
       .cdeliv li { position: relative; padding-left: 22px; font-size: 16px; color: var(--graphite); margin: 0 0 11px; line-height: 1.5; }
       .cdeliv li:last-child { margin-bottom: 0; }
       .cdeliv li::before { content: ""; position: absolute; left: 0; top: 11px; width: 9px; height: 2px; background: var(--accent); }
 
-      /* gallery — compact thumbnails, the visual center */
+      /* implementation — gallery as project documentation */
+      .gsection { margin: clamp(48px, 7vw, 80px) 0 0; }
+      .gsection .clabel { margin: 0 0 6px; }
+      .gsub { font-size: 14px; color: var(--muted); margin: 0 0 20px; }
       .gallery {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-        margin: clamp(34px, 5vw, 56px) 0 0;
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0;
       }
       .thumb {
         padding: 0; border: 0; margin: 0; cursor: pointer; overflow: hidden;
@@ -180,10 +184,11 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       .thumb:hover img { transform: scale(1.05); }
       .thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-      /* result */
-      .cresult { margin: clamp(36px, 5vw, 60px) 0 0; max-width: 58ch; }
+      /* result — clear top break, tight ending */
+      .cresult { margin: clamp(48px, 7vw, 80px) 0 0; }
       .cresult p { font-size: 17px; color: var(--graphite); }
       .cresult p:last-child { margin-bottom: 0; }
+      .case { padding-bottom: 0; }
 
       /* lightbox */
       .lb {
