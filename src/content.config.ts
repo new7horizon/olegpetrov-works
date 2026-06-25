@@ -23,6 +23,9 @@ const cases = defineCollection({
           alt: z.string().default(''),
           caption: z.string().default(''),
           group: z.string().default('Gallery'),
+          // Magazine weight in the reportage flow. 'closing' lifts a frame
+          // beside the result text. Defaults to a paired half-width plate.
+          layout: z.enum(['full', 'wide', 'half', 'third', 'closing']).default('half'),
         })
       )
       .default([]),

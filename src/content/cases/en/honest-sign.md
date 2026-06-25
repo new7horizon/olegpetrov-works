@@ -15,18 +15,18 @@ result: |
 
   The plant met the Honest Sign deadline without losing production, and was left with a working, supportable setup it could run on its own.
 gallery:
-  - { src: "/cases/honest-sign/commissioning-scanner.jpg", alt: "A technician tuning the inline code scanner on a running sealer", caption: "Commissioning by hand — tuning the inline code scanner on a running sealer until every pack reads.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/production-piping-team.jpg", alt: "Engineers fitting the marking onto a live dairy line", caption: "On the floor with the crew — fitting the marking onto a live dairy line.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/commissioning-scanner.jpg", alt: "A technician tuning the inline code scanner on a running sealer", caption: "Commissioning by hand — tuning the inline code scanner on a running sealer until every pack reads.", group: "Inside the project", layout: "wide" }
+  - { src: "/cases/honest-sign/production-piping-team.jpg", alt: "Engineers fitting the marking onto a live dairy line", caption: "On the floor with the crew — fitting the marking onto a live dairy line.", group: "Inside the project", layout: "full" }
   - { src: "/cases/honest-sign/field-enclosure.jpg", alt: "Vision-camera connection box, PSU and switch in a field enclosure", caption: "A vision-camera connection box, power supply and switch wired into a field enclosure.", group: "Inside the project" }
   - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "New marking control wired into existing machinery", caption: "Tying the new marking control into machinery never designed for it.", group: "Inside the project" }
   - { src: "/cases/honest-sign/network-into-plc.jpg", alt: "Managed switch feeding the PLC cabinet", caption: "A managed switch puts the packaging line on the network — the OT/IT bridge.", group: "Inside the project" }
   - { src: "/cases/honest-sign/plc-drive-cabinet.jpg", alt: "PLC, drive and protection in the machine cabinet", caption: "PLC, drive and protection wired in the machine cabinet.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Vision camera verifies codes while the operator runs the line", caption: "A vision camera verifies every code while the operator runs the line.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/datalogic-red-sourcream.jpg", alt: "A Datalogic camera reads the code on every sour-cream cup inline", caption: "A Datalogic camera reads the code on every sour-cream cup inline.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "A Cognex reader checks the code on every sour-cream lid", caption: "A Cognex reader checks the code on every sour-cream lid.", group: "Inside the project" }
+  - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Vision camera verifies codes while the operator runs the line", caption: "A vision camera verifies every code while the operator runs the line.", group: "Inside the project", layout: "third" }
+  - { src: "/cases/honest-sign/datalogic-red-sourcream.jpg", alt: "A Datalogic camera reads the code on every sour-cream cup inline", caption: "A Datalogic camera reads the code on every sour-cream cup inline.", group: "Inside the project", layout: "third" }
+  - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "A Cognex reader checks the code on every sour-cream lid", caption: "A Cognex reader checks the code on every sour-cream lid.", group: "Inside the project", layout: "third" }
   - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Unique DataMatrix and date printed inline on product", caption: "The output on the product — a unique DataMatrix and date, printed inline.", group: "Inside the project" }
   - { src: "/cases/honest-sign/marked-product.jpg", alt: "Marked milk packs each carrying a unique code", caption: "Production runs marked — each pack carries its own identity.", group: "Inside the project" }
-  - { src: "/cases/honest-sign/verified-in-app.png", alt: "Honest Sign consumer app shows the product as verified", caption: 'And in the public app, the pack comes back "Verified".', group: "Inside the project" }
+  - { src: "/cases/honest-sign/verified-in-app.png", alt: "Honest Sign consumer app shows the product as verified", caption: 'And in the public app, the pack comes back "Verified".', group: "Inside the project", layout: "closing" }
 ---
 
 ## The challenge

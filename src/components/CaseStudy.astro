@@ -11,18 +11,6 @@ const t = useTranslations(lang);
 const { Content } = await render(entry);
 const d = entry.data;
 
-// Group gallery items, preserving first-seen order of groups.
-type Item = (typeof d.gallery)[number];
-const groups: { name: string; items: Item[] }[] = [];
-for (const item of d.gallery) {
-  let g = groups.find((x) => x.name === item.group);
-  if (!g) {
-    g = { name: item.group, items: [] };
-    groups.push(g);
-  }
-  g.items.push(item);
-}
-
 const meta = (
   [
     ['case.role', d.role],
@@ -31,22 +19,51 @@ const meta = (
     ['case.period', d.period],
   ] as const
 ).filter((row): row is [(typeof row)[0], string] => Boolean(row[1]));
+
+type Item = (typeof d.gallery)[number];
+const lay = (it: Item) => it.layout ?? 'half';
+
+// 'closing' frames are lifted out to sit beside the result; the rest flow.
+const closing = d.gallery.filter((it) => lay(it) === 'closing');
+const flow = d.gallery.filter((it) => lay(it) !== 'closing');
+
+// Compose a magazine rhythm: full / wide get their own row; consecutive
+// half-plates pair up (2), thirds form a triptych (3).
+type Row = { kind: 'full' | 'wide' | 'half' | 'third'; items: Item[] };
+const rows: Row[] = [];
+for (let i = 0; i < flow.length; ) {
+  const L = lay(flow[i]) as Row['kind'];
+  if (L === 'full' || L === 'wide') {
+    rows.push({ kind: L, items: [flow[i]] });
+    i++;
+    continue;
+  }
+  const size = L === 'third' ? 3 : 2;
+  const group: Item[] = [];
+  while (i < flow.length && lay(flow[i]) === L && group.length < size) {
+    group.push(flow[i]);
+    i++;
+  }
+  rows.push({ kind: L, items: group });
+}
 ---
 
 <article class="case">
-  <header class="case-hero">
+  <header class="hero">
     <img src={d.cover} alt={d.title} />
-    <div class="case-hero__veil"></div>
-    <div class="case-hero__cap">
-      {d.tags.length > 0 && <p class="kicker">{d.tags.join(' · ')}</p>}
-      <h1>{d.title}</h1>
-      <p class="case-hero__sub">{d.subtitle}</p>
+    <div class="hero__veil"></div>
+    <div class="hero__capwrap">
+      <div class="hero__cap">
+        {d.tags.length > 0 && <p class="kicker">{d.tags.join('   ·   ')}</p>}
+        <h1>{d.title}</h1>
+        <p class="hero__sub">{d.subtitle}</p>
+      </div>
     </div>
   </header>
 
   {
     meta.length > 0 && (
-      <dl class="meta">
+      <dl class="facts">
         {meta.map(([key, v]) => (
           <div>
             <dt>{t(key)}</dt>
@@ -61,30 +78,57 @@ const meta = (
     <Content />
   </div>
 
-  {
-    groups.map((g) => (
-      <section class="gallery-section">
-        <h2 class="gallery-section__title">{g.name}</h2>
-        <div class="gallery-grid">
-          {g.items.map((it) => (
-            <figure>
-              <img src={it.src} alt={it.alt} loading="lazy" />
-              {it.caption && <figcaption set:html={it.caption} />}
-            </figure>
-          ))}
-        </div>
-      </section>
-    ))
-  }
+  <section class="report">
+    {
+      rows.map((r) =>
+        r.kind === 'full' ? (
+          <figure class="plate plate--full">
+            <img src={r.items[0].src} alt={r.items[0].alt} loading="lazy" />
+            {r.items[0].caption && (
+              <figcaption class="cap cap--center" set:html={r.items[0].caption} />
+            )}
+          </figure>
+        ) : r.kind === 'wide' ? (
+          <figure class="plate plate--wide">
+            <img src={r.items[0].src} alt={r.items[0].alt} loading="lazy" />
+            {r.items[0].caption && <figcaption class="cap" set:html={r.items[0].caption} />}
+          </figure>
+        ) : (
+          <div class={`band band--${r.kind}`}>
+            {r.items.map((it) => (
+              <figure class="plate">
+                <img src={it.src} alt={it.alt} loading="lazy" />
+                {it.caption && <figcaption class="cap" set:html={it.caption} />}
+              </figure>
+            ))}
+          </div>
+        )
+      )
+    }
+  </section>
 
   {
-    d.result && (
-      <div class="prose">
-        <h2>{t('case.result')}</h2>
-        {d.result.split('\n\n').map((p) => (
-          <p>{p}</p>
-        ))}
-      </div>
+    (d.result || closing.length > 0) && (
+      <section class="closing">
+        {d.result && (
+          <div class="closing__text">
+            <p class="closing__kicker">{t('case.result')}</p>
+            {d.result.split('\n\n').map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        )}
+        {closing.length > 0 && (
+          <div class="closing__media">
+            {closing.map((it) => (
+              <figure class="phone">
+                <img src={it.src} alt={it.alt} loading="lazy" />
+                {it.caption && <figcaption class="cap" set:html={it.caption} />}
+              </figure>
+            ))}
+          </div>
+        )}
+      </section>
     )
   }
 </article>

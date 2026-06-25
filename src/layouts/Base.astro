@@ -80,7 +80,7 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       body {
         margin: 0; background: var(--bg); color: var(--ink);
         font-family: var(--font); font-size: 17px; line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased; overflow-x: hidden;
       }
       a { color: inherit; }
       img { display: block; max-width: 100%; }
@@ -144,60 +144,91 @@ const xDefault = new URL(localizeUrl(defaultLang, logical), Astro.site).href;
       .card__body p { font-size: 15px; margin: 8px 0 12px; }
       .card__tags { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
 
-      /* ---- case page ---- */
-      .case { padding-bottom: 20px; }
-      .case-hero {
-        position: relative; margin: 10px 0 0; border-radius: 10px; overflow: hidden;
-        aspect-ratio: 16/9; background: var(--panel);
+      /* ---- case page: engineering reportage ---- */
+      .case { padding-bottom: 24px; }
+
+      /* full-bleed cinematic hero */
+      .hero {
+        position: relative; margin-top: 6px;
+        width: 100vw; margin-left: calc(50% - 50vw);
+        aspect-ratio: 16/9; max-height: 80vh; overflow: hidden; background: var(--panel);
       }
-      .case-hero img { width: 100%; height: 100%; object-fit: cover; }
-      .case-hero__veil {
+      .hero img { width: 100%; height: 100%; object-fit: cover; }
+      .hero__veil {
         position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(10,13,16,.05), rgba(10,13,16,.15) 45%, rgba(10,13,16,.82));
+        background: linear-gradient(180deg, rgba(10,13,16,0) 28%, rgba(10,13,16,.18) 52%, rgba(10,13,16,.80));
       }
-      .case-hero__cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 30px; color: #fff; }
-      .kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #f0c9a6; font-weight: 700; margin: 0 0 8px; }
-      .case-hero__cap h1 { font-size: 40px; color: #fff; }
-      .case-hero__sub { font-size: 17px; color: #e3e7ea; margin: 10px 0 0; max-width: 680px; }
+      .hero__capwrap { position: absolute; inset: 0; display: flex; align-items: flex-end; }
+      .hero__cap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px 46px; color: #fff; }
+      .kicker { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #f0c9a6; font-weight: 700; margin: 0 0 16px; }
+      .hero__cap h1 { font-size: clamp(32px, 5.2vw, 56px); color: #fff; letter-spacing: -0.025em; }
+      .hero__sub { font-size: clamp(16px, 1.8vw, 20px); color: #e7eaed; margin: 16px 0 0; max-width: 620px; line-height: 1.45; }
 
-      .meta {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 22px 0 0;
-        border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+      /* facts — airy, borderless */
+      .facts {
+        display: flex; flex-wrap: wrap; gap: 26px 56px;
+        margin: clamp(30px, 5vw, 56px) 0 0; padding: 0;
       }
-      .meta > div { padding: 12px 16px; border-right: 1px solid var(--line); }
-      .meta > div:last-child { border-right: 0; }
-      .meta dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight: 700; margin-bottom: 4px; }
-      .meta dd { margin: 0; font-size: 14px; font-weight: 550; }
+      .facts > div { margin: 0; }
+      .facts dt { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); font-weight: 700; margin: 0 0 7px; }
+      .facts dd { margin: 0; font-size: 16px; font-weight: 550; color: var(--ink); }
 
-      .prose { max-width: 720px; margin: 48px auto 10px; }
-      .prose h2 { font-size: 24px; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
+      /* prose — softened headings, more air, no rules */
+      .prose { max-width: 680px; margin: clamp(40px, 6vw, 76px) auto 0; }
+      .prose h2 {
+        font-size: clamp(22px, 2.6vw, 27px); letter-spacing: -0.02em;
+        margin: clamp(40px, 6vw, 66px) 0 16px; padding: 0; border: 0;
+      }
+      .prose h2::before {
+        content: ""; display: block; width: 28px; height: 2px; border-radius: 2px;
+        background: var(--accent); opacity: .9; margin-bottom: 18px;
+      }
       .prose h2:first-child { margin-top: 0; }
       .prose p { font-size: 17px; }
-      .prose ul { padding-left: 20px; color: var(--graphite); }
-      .prose li { margin: 0 0 8px; }
+      .prose ul { padding-left: 18px; color: var(--graphite); margin: 0 0 1em; }
+      .prose li { margin: 0 0 10px; }
       .prose strong { color: var(--ink); }
-      .prose blockquote {
-        margin: 18px 0; padding: 4px 0 4px 16px; border-left: 2px solid var(--accent);
-        color: var(--ink); font-style: italic;
-      }
 
-      .gallery-section { margin: 44px 0 0; }
-      .gallery-section__title {
-        font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent);
-        font-weight: 700; margin: 0 0 14px;
+      /* report — magazine flow of plates */
+      .report { display: flex; flex-direction: column; gap: clamp(30px, 5vw, 72px); margin: clamp(46px, 7vw, 96px) 0; }
+      .report .plate { margin: 0; }
+      .report img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; background: var(--panel); }
+      .band { display: grid; gap: clamp(14px, 2vw, 26px); align-items: start; }
+      .band--half { grid-template-columns: repeat(2, 1fr); }
+      .band--third { grid-template-columns: repeat(3, 1fr); }
+      .band--half .plate img { aspect-ratio: 4/3; }
+      .band--third .plate img { aspect-ratio: 3/4; }
+      .plate--wide img { aspect-ratio: 16/9; }
+      .plate--full { width: 100vw; margin-left: calc(50% - 50vw); }
+      .plate--full img { aspect-ratio: 21/9; max-height: 86vh; border-radius: 0; }
+
+      /* captions — light */
+      .cap { font-size: 13px; color: var(--muted); margin-top: 11px; line-height: 1.5; max-width: 56ch; }
+      .cap--center { max-width: var(--maxw); margin: 14px auto 0; padding: 0 24px; }
+
+      /* closing — result paired with the app proof */
+      .closing {
+        display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px);
+        align-items: center; margin: clamp(50px, 8vw, 104px) 0 0;
       }
-      .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-      .gallery-grid figure { margin: 0; }
-      .gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 6px; background: var(--panel); }
-      .gallery-grid figcaption { font-size: 13px; color: var(--muted); margin-top: 7px; line-height: 1.4; }
+      .closing__kicker { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 16px; }
+      .closing__text p { font-size: 18px; color: var(--graphite); max-width: 46ch; }
+      .closing__text p:last-child { margin-bottom: 0; }
+      .closing__media { display: flex; justify-content: center; }
+      .phone { margin: 0; max-width: 300px; }
+      .phone img { width: 100%; border-radius: 18px; box-shadow: 0 18px 50px rgba(20,24,29,.16); background: var(--panel); }
+      .phone .cap { text-align: center; max-width: none; margin-top: 14px; }
 
       @media (max-width: 720px) {
         body { font-size: 16px; }
         .intro h1 { font-size: 36px; }
-        .case-hero { aspect-ratio: 3/2; }
-        .case-hero__cap h1 { font-size: 28px; }
-        .meta { grid-template-columns: repeat(2, 1fr); }
-        .meta > div:nth-child(2) { border-right: 0; }
+        .hero { aspect-ratio: 3/2; max-height: 72vh; }
+        .hero__cap { padding-bottom: 30px; }
+        .facts { gap: 20px 40px; }
+        .band--half, .band--third { grid-template-columns: 1fr; }
+        .plate--full img { aspect-ratio: 3/2; }
+        .closing { grid-template-columns: 1fr; gap: 32px; }
+        .phone { max-width: 260px; }
         .site-foot { gap: 4px 16px; }
         .site-head { flex-wrap: wrap; gap: 10px 16px; }
         .site-head__right { gap: 16px; }
