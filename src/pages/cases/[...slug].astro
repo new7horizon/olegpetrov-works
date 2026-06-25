@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+// group gallery items, preserving first-seen order of groups
+type Item = (typeof d.gallery)[number];
+const groups: { name: string; items: Item[] }[] = [];
+for (const item of d.gallery) {
+  let g = groups.find((x) => x.name === item.group);
+  if (!g) {
+    g = { name: item.group, items: [] };
+    groups.push(g);
+  }
+  g.items.push(item);
+}
+
+const meta = (
+  [
+    ['Role', d.role],
+    ['Scope', d.scope],
+    ['Site', d.site],
+    ['Period', d.period],
+  ] as const
+).filter((row): row is [string, string] => Boolean(row[1]));
+---
+
+<Base title={`${d.title} — Oleg Petrov`} description={d.subtitle}>
+  <article class="case">
+    <header class="case-hero">
+      <img src={d.cover} alt={d.title} />
+      <div class="case-hero__veil"></div>
+      <div class="case-hero__cap">
+        {d.tags.length > 0 && <p class="kicker">{d.tags.join(' · ')}</p>}
+        <h1>{d.title}</h1>
+        <p class="case-hero__sub">{d.subtitle}</p>
+      </div>
+    </header>
+
+    {
+      meta.length > 0 && (
+        <dl class="meta">
+          {meta.map(([k, v]) => (
+            <div>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {
+      groups.map((g) => (
+        <section class="gallery-section">
+          <h2 class="gallery-section__title">{g.name}</h2>
+          <div class="gallery-grid">
+            {g.items.map((it) => (
+              <figure>
+                <img src={it.src} alt={it.alt} loading="lazy" />
+                {it.caption && <figcaption set:html={it.caption} />}
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </article>
+</Base>

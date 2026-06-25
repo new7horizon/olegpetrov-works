@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const cases = (await getCollection('cases')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base title="Oleg Petrov — Network Infrastructure & Low-Voltage Systems">
+  <section class="intro">
+    <h1>Oleg Petrov</h1>
+    <p class="lead">
+      Hands-on network infrastructure and low-voltage systems — design, build and
+      commissioning of structured cabling, racks, networking, CCTV, UPS, industrial
+      automation and product marking.
+    </p>
+    <p class="muted">Melbourne, Australia (planned relocation)</p>
+  </section>
+
+  <section class="work" id="work">
+    <div class="section-head"><h2>Selected work</h2></div>
+    <div class="cards">
+      {
+        cases.map((c) => (
+          <a class="card" href={`/cases/${c.id}/`}>
+            <div class="card__img">
+              <img src={c.data.cover} alt={c.data.title} loading="lazy" />
+            </div>
+            <div class="card__body">
+              <h3>
+                {c.data.title}
+                {c.data.titleEn && <span class="card__en">· {c.data.titleEn}</span>}
+              </h3>
+              <p>{c.data.summary}</p>
+              {c.data.tags.length > 0 && (
+                <span class="card__tags">{c.data.tags.join(' · ')}</span>
+              )}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="section-head"><h2>About</h2></div>
+    <p>
+      Extensive hands-on experience designing, building and maintaining network
+      infrastructure for restaurants, offices, retail and industrial facilities —
+      structured cabling, rack assembly, equipment commissioning, CCTV and surveillance,
+      wireless networking, UPS deployment and troubleshooting.
+    </p>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-head"><h2>Contact</h2></div>
+    <p class="muted">LinkedIn — coming soon</p>
+    <p class="muted">Email — coming soon</p>
+  </section>
+</Base>
