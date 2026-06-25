@@ -1,5 +1,5 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 import { useTranslations, type Locale } from '../i18n/ui';
 
 interface Props {
@@ -8,127 +8,145 @@ interface Props {
 }
 const { entry, lang } = Astro.props;
 const t = useTranslations(lang);
-const { Content } = await render(entry);
 const d = entry.data;
 
-const meta = (
+const facts = (
   [
     ['case.role', d.role],
-    ['case.scope', d.scope],
-    ['case.site', d.site],
     ['case.period', d.period],
+    ['case.site', d.site],
   ] as const
 ).filter((row): row is [(typeof row)[0], string] => Boolean(row[1]));
 
-type Item = (typeof d.gallery)[number];
-const lay = (it: Item) => it.layout ?? 'half';
-
-// 'closing' frames are lifted out to sit beside the result; the rest flow.
-const closing = d.gallery.filter((it) => lay(it) === 'closing');
-const flow = d.gallery.filter((it) => lay(it) !== 'closing');
-
-// Compose a magazine rhythm: full / wide get their own row; consecutive
-// half-plates pair up (2), thirds form a triptych (3).
-type Row = { kind: 'full' | 'wide' | 'half' | 'third'; items: Item[] };
-const rows: Row[] = [];
-for (let i = 0; i < flow.length; ) {
-  const L = lay(flow[i]) as Row['kind'];
-  if (L === 'full' || L === 'wide') {
-    rows.push({ kind: L, items: [flow[i]] });
-    i++;
-    continue;
-  }
-  const size = L === 'third' ? 3 : 2;
-  const group: Item[] = [];
-  while (i < flow.length && lay(flow[i]) === L && group.length < size) {
-    group.push(flow[i]);
-    i++;
-  }
-  rows.push({ kind: L, items: group });
-}
+const photos = d.gallery.map((p) => ({ src: p.src, alt: p.alt }));
 ---
 
 <article class="case">
-  <header class="hero">
+  <header class="chero">
     <img src={d.cover} alt={d.title} />
-    <div class="hero__veil"></div>
-    <div class="hero__capwrap">
-      <div class="hero__cap">
-        {d.tags.length > 0 && <p class="kicker">{d.tags.join('   ·   ')}</p>}
-        <h1>{d.title}</h1>
-        <p class="hero__sub">{d.subtitle}</p>
-      </div>
-    </div>
   </header>
 
-  {
-    meta.length > 0 && (
-      <dl class="facts">
-        {meta.map(([key, v]) => (
-          <div>
-            <dt>{t(key)}</dt>
-            <dd>{v}</dd>
-          </div>
-        ))}
-      </dl>
-    )
-  }
-
-  <div class="prose">
-    <Content />
-  </div>
-
-  <section class="report">
-    {
-      rows.map((r) =>
-        r.kind === 'full' ? (
-          <figure class="plate plate--full">
-            <img src={r.items[0].src} alt={r.items[0].alt} loading="lazy" />
-            {r.items[0].caption && (
-              <figcaption class="cap cap--center" set:html={r.items[0].caption} />
-            )}
-          </figure>
-        ) : r.kind === 'wide' ? (
-          <figure class="plate plate--wide">
-            <img src={r.items[0].src} alt={r.items[0].alt} loading="lazy" />
-            {r.items[0].caption && <figcaption class="cap" set:html={r.items[0].caption} />}
-          </figure>
-        ) : (
-          <div class={`band band--${r.kind}`}>
-            {r.items.map((it) => (
-              <figure class="plate">
-                <img src={it.src} alt={it.alt} loading="lazy" />
-                {it.caption && <figcaption class="cap" set:html={it.caption} />}
-              </figure>
+  <div class="cwrap">
+    <div class="chead">
+      <h1>{d.title}</h1>
+      <p class="csub">{d.subtitle}</p>
+      {
+        facts.length > 0 && (
+          <ul class="cfacts">
+            {facts.map(([key, v]) => (
+              <li>
+                <span class="k">{t(key)}</span>
+                {v}
+              </li>
             ))}
-          </div>
+          </ul>
         )
+      }
+    </div>
+
+    {d.summary && <p class="clede">{d.summary}</p>}
+
+    {
+      d.delivered.length > 0 && (
+        <section class="cdeliv">
+          <p class="clabel">{t('case.delivered')}</p>
+          <ul>
+            {d.delivered.map((x) => (
+              <li>{x}</li>
+            ))}
+          </ul>
+        </section>
       )
     }
-  </section>
 
-  {
-    (d.result || closing.length > 0) && (
-      <section class="closing">
-        {d.result && (
-          <div class="closing__text">
-            <p class="closing__kicker">{t('case.result')}</p>
-            {d.result.split('\n\n').map((p) => (
-              <p>{p}</p>
-            ))}
-          </div>
-        )}
-        {closing.length > 0 && (
-          <div class="closing__media">
-            {closing.map((it) => (
-              <figure class="phone">
-                <img src={it.src} alt={it.alt} loading="lazy" />
-                {it.caption && <figcaption class="cap" set:html={it.caption} />}
-              </figure>
-            ))}
-          </div>
-        )}
-      </section>
-    )
-  }
+    <section class="gallery">
+      {
+        photos.map((p, i) => (
+          <button class="thumb" data-i={i} type="button" aria-label={p.alt}>
+            <img src={p.src} alt={p.alt} loading="lazy" />
+          </button>
+        ))
+      }
+    </section>
+
+    {
+      d.result && (
+        <section class="cresult">
+          <p class="clabel">{t('case.result')}</p>
+          {d.result.split('\n\n').map((p) => (
+            <p>{p}</p>
+          ))}
+        </section>
+      )
+    }
+  </div>
+
+  <div class="lb" id="lb" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lb__btn lb__x" data-act="close" type="button" aria-label="Close">×</button>
+    <button class="lb__btn lb__nav lb__prev" data-act="prev" type="button" aria-label="Previous">‹</button>
+    <figure class="lb__stage">
+      <img id="lbimg" src="" alt="" />
+      <figcaption class="lb__count"><span id="lbn">1</span> / <span id="lbt">1</span></figcaption>
+    </figure>
+    <button class="lb__btn lb__nav lb__next" data-act="next" type="button" aria-label="Next">›</button>
+  </div>
 </article>
+
+<script define:vars={{ images: photos }}>
+  const lb = document.getElementById('lb');
+  if (lb && images.length) {
+    const img = document.getElementById('lbimg');
+    const nEl = document.getElementById('lbn');
+    const tEl = document.getElementById('lbt');
+    let idx = 0;
+    tEl.textContent = images.length;
+
+    const show = (i) => {
+      idx = (i + images.length) % images.length;
+      img.src = images[idx].src;
+      img.alt = images[idx].alt || '';
+      nEl.textContent = idx + 1;
+    };
+    const open = (i) => {
+      show(i);
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.thumb').forEach((b) =>
+      b.addEventListener('click', () => open(Number(b.dataset.i)))
+    );
+
+    lb.addEventListener('click', (e) => {
+      const act = e.target.closest('[data-act]');
+      if (act) {
+        const k = act.dataset.act;
+        if (k === 'close') close();
+        else if (k === 'prev') show(idx - 1);
+        else if (k === 'next') show(idx + 1);
+        return;
+      }
+      if (e.target === lb) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    let sx = 0;
+    lb.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 45) show(dx < 0 ? idx + 1 : idx - 1);
+    }, { passive: true });
+  }
+</script>

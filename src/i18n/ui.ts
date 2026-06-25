@@ -37,6 +37,7 @@ export const ui = {
     'case.site': 'Site',
     'case.period': 'Period',
     'case.result': 'Result',
+    'case.delivered': 'What we delivered',
     'switcher.label': 'Language',
   },
   ru: {
@@ -64,6 +65,7 @@ export const ui = {
     'case.site': 'Объект',
     'case.period': 'Период',
     'case.result': 'Результат',
+    'case.delivered': 'Что сделано',
     'switcher.label': 'Язык',
   },
 } as const;

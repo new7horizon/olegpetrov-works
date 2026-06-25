@@ -13,7 +13,13 @@ order: 1
 result: |
   The lines went live, marked. Codes are printed, read and verified inline, and every pack now resolves in the national system — a scan in the shop comes back "Verified".
 
-  The plant met the Honest Sign deadline without losing production, and was left with a working, supportable setup it could run on its own.
+  The plant met the Honest Sign deadline without losing production, and kept a working, supportable setup it can run on its own.
+delivered:
+  - "Marking fitted onto live, mixed-vendor packaging lines without stopping production"
+  - "VideoJet & LetsMark coders with Datalogic and Cognex vision on existing machines"
+  - "New field power, managed networking and a server reporting to the state system"
+  - "Every pack printed, read and verified inline — unit-level traceability"
+  - "Delivered on site end to end, from survey to a stable, supportable line"
 gallery:
   - { src: "/cases/honest-sign/commissioning-scanner.jpg", alt: "A technician tuning the inline code scanner on a running sealer", caption: "Commissioning by hand — tuning the inline code scanner on a running sealer until every pack reads.", group: "Inside the project", layout: "wide" }
   - { src: "/cases/honest-sign/production-piping-team.jpg", alt: "Engineers fitting the marking onto a live dairy line", caption: "On the floor with the crew — fitting the marking onto a live dairy line.", group: "Inside the project", layout: "full" }
