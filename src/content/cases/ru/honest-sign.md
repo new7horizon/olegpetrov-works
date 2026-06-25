@@ -6,7 +6,7 @@ role: "Интеграция и пусконаладка"
 scope: "Работы на объекте, под ключ"
 site: "Действующий молокозавод, Россия"
 period: "2021–2022"
-cover: "/cases/honest-sign/hero-production-line.jpg"
+cover: "/cases/honest-sign/00-hero.webp"
 tags: ["Маркировка и прослеживаемость", "Действующее производство"]
 order: 1
 result: |
@@ -20,22 +20,22 @@ delivered:
   - "Каждая упаковка печатается, считывается и проверяется в потоке — поштучная прослеживаемость"
   - "Сделано на объекте под ключ — от обследования до стабильной линии"
 gallery:
-  - { src: "/cases/honest-sign/commissioning-scanner.jpg", alt: "Техник настраивает сканер кодов на работающем запайщике", caption: "Пусконаладка руками — настройка сканера кодов на работающем запайщике, пока каждая упаковка не считывается.", group: "Внутри проекта", layout: "wide" }
-  - { src: "/cases/honest-sign/production-piping-team.jpg", alt: "Бригада встраивает маркировку в действующую линию", caption: "На линии с бригадой — встраиваем маркировку в действующий молочный цех.", group: "Внутри проекта", layout: "full" }
-  - { src: "/cases/honest-sign/field-enclosure.jpg", alt: "Коробка подключения камеры, БП и коммутатор в полевом шкафу", caption: "Коробка подключения камеры, блок питания и коммутатор в полевом шкафу.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/machine-control-cabinet.jpg", alt: "Новая автоматика маркировки в существующей машине", caption: "Подключение новой автоматики маркировки к машинам, не рассчитанным на это.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/network-into-plc.jpg", alt: "Управляемый коммутатор заводит линию в сеть", caption: "Управляемый коммутатор заводит упаковочную линию в сеть — мост OT/IT.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/plc-drive-cabinet.jpg", alt: "PLC, привод и защита в шкафу управления машиной", caption: "PLC, привод и защита, смонтированные в шкафу управления машиной.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/camera-reading-codes.jpg", alt: "Камера зрения проверяет коды, оператор ведёт линию", caption: "Камера зрения проверяет каждый код, пока оператор ведёт линию.", group: "Внутри проекта", layout: "third" }
-  - { src: "/cases/honest-sign/datalogic-red-sourcream.jpg", alt: "Камера Datalogic считывает код на каждом стакане сметаны", caption: "Камера Datalogic считывает код на каждом стакане сметаны в потоке.", group: "Внутри проекта", layout: "third" }
-  - { src: "/cases/honest-sign/cognex-lids-red.jpg", alt: "Считыватель Cognex проверяет код на крышке сметаны", caption: "Считыватель Cognex проверяет код на каждой крышке сметаны.", group: "Внутри проекта", layout: "third" }
-  - { src: "/cases/honest-sign/marking-hmi.jpg", alt: "HMI принтера LetsMark TIJ: код, дата и шаблон печати", caption: "Экран принтера LetsMark TIJ — код, дата и шаблон печати под каждый продукт.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/code-on-product.jpg", alt: "Уникальный DataMatrix и дата на продукте", caption: "Результат на продукте — уникальный DataMatrix и дата, нанесённые в потоке.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/marked-product.jpg", alt: "Маркированные пакеты молока с уникальными кодами", caption: "Продукция идёт маркированной — у каждой упаковки своя идентичность.", group: "Внутри проекта" }
-  - { src: "/cases/honest-sign/coded-butter-line.jpg", alt: "Пачки масла на линии, каждая с напечатанным кодом и датой", caption: "Пачки масла идут по линии — на каждой свой код и дата, нанесённые в потоке.", group: "Внутри проекта", layout: "wide" }
-  - { src: "/cases/honest-sign/datamatrix-label.jpg", alt: "Две печатные этикетки в руке, на каждой уникальный DataMatrix и штрихкод", caption: "Печатные этикетки в руке — на каждой свой DataMatrix и штрихкод для государственной системы.", group: "Внутри проекта", layout: "duo" }
-  - { src: "/cases/honest-sign/code-on-kefir.jpg", alt: "Уникальный DataMatrix и дата на пакете кефира, нанесённые в потоке", caption: "Уникальный DataMatrix и дата, нанесённые в потоке на пакете кефира.", group: "Внутри проекта", layout: "duo" }
-  - { src: "/cases/honest-sign/verified-in-app.png", alt: "Приложение «Честный знак»: товар проверен", caption: "А в приложении упаковка отображается как «Проверено».", group: "Внутри проекта", layout: "closing" }
+  - { src: "/cases/honest-sign/01-commissioning-scanner.webp", alt: "Техник настраивает сканер кодов на работающем запайщике", caption: "Пусконаладка руками — настройка сканера кодов на работающем запайщике, пока каждая упаковка не считывается.", group: "Внутри проекта", layout: "wide" }
+  - { src: "/cases/honest-sign/02-team-on-the-line.webp", alt: "Бригада встраивает маркировку в действующую линию", caption: "На линии с бригадой — встраиваем маркировку в действующий молочный цех.", group: "Внутри проекта", layout: "full" }
+  - { src: "/cases/honest-sign/03-field-enclosure.webp", alt: "Коробка подключения камеры, БП и коммутатор в полевом шкафу", caption: "Коробка подключения камеры, блок питания и коммутатор в полевом шкафу.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/04-machine-control-cabinet.webp", alt: "Новая автоматика маркировки в существующей машине", caption: "Подключение новой автоматики маркировки к машинам, не рассчитанным на это.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/05-plc-control-cabinet.webp", alt: "Управляемый коммутатор заводит линию в сеть", caption: "Управляемый коммутатор заводит упаковочную линию в сеть — мост OT/IT.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/06-plc-drive-cabinet.webp", alt: "PLC, привод и защита в шкафу управления машиной", caption: "PLC, привод и защита, смонтированные в шкафу управления машиной.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/07-vision-camera-reading.webp", alt: "Камера зрения проверяет коды, оператор ведёт линию", caption: "Камера зрения проверяет каждый код, пока оператор ведёт линию.", group: "Внутри проекта", layout: "third" }
+  - { src: "/cases/honest-sign/08-datalogic-sourcream.webp", alt: "Камера Datalogic считывает код на каждом стакане сметаны", caption: "Камера Datalogic считывает код на каждом стакане сметаны в потоке.", group: "Внутри проекта", layout: "third" }
+  - { src: "/cases/honest-sign/09-cognex-lids.webp", alt: "Считыватель Cognex проверяет код на крышке сметаны", caption: "Считыватель Cognex проверяет код на каждой крышке сметаны.", group: "Внутри проекта", layout: "third" }
+  - { src: "/cases/honest-sign/10-coder-hmi.webp", alt: "HMI принтера LetsMark TIJ: код, дата и шаблон печати", caption: "Экран принтера LetsMark TIJ — код, дата и шаблон печати под каждый продукт.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/11-code-on-product.webp", alt: "Уникальный DataMatrix и дата на продукте", caption: "Результат на продукте — уникальный DataMatrix и дата, нанесённые в потоке.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/12-marked-packs.webp", alt: "Маркированные пакеты молока с уникальными кодами", caption: "Продукция идёт маркированной — у каждой упаковки своя идентичность.", group: "Внутри проекта" }
+  - { src: "/cases/honest-sign/13-coded-butter-line.webp", alt: "Пачки масла на линии, каждая с напечатанным кодом и датой", caption: "Пачки масла идут по линии — на каждой свой код и дата, нанесённые в потоке.", group: "Внутри проекта", layout: "wide" }
+  - { src: "/cases/honest-sign/14-datamatrix-labels.webp", alt: "Две печатные этикетки в руке, на каждой уникальный DataMatrix и штрихкод", caption: "Печатные этикетки в руке — на каждой свой DataMatrix и штрихкод для государственной системы.", group: "Внутри проекта", layout: "duo" }
+  - { src: "/cases/honest-sign/15-code-on-kefir.webp", alt: "Уникальный DataMatrix и дата на пакете кефира, нанесённые в потоке", caption: "Уникальный DataMatrix и дата, нанесённые в потоке на пакете кефира.", group: "Внутри проекта", layout: "duo" }
+  - { src: "/cases/honest-sign/16-verified-in-app.webp", alt: "Приложение «Честный знак»: товар проверен", caption: "А в приложении упаковка отображается как «Проверено».", group: "Внутри проекта", layout: "closing" }
 ---
 
 ## Задача
